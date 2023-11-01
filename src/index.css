@@ -89,11 +89,16 @@ ul {
   padding: 0 15%;
 }
 
+.content-section p {
+  text-shadow:2px 2px #111d32 !important
+}
+
 .content-section h2 {
   font-size: 2rem;
   font-family: 'Quicksand', sans-serif;
   margin: 2rem auto;
   color: #b6cad5;
+  text-shadow:2px 2px #111d32 ;
 }
 
 .events-list {

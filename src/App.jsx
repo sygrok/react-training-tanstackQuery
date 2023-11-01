@@ -8,6 +8,7 @@ import Events from './components/Events/Events.jsx';
 import EventDetails from './components/Events/EventDetails.jsx';
 import NewEvent from './components/Events/NewEvent.jsx';
 import EditEvent from './components/Events/EditEvent.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,6 @@ const router = createBrowserRouter([
   {
     path: '/events',
     element: <Events />,
-
     children: [
       {
         path: '/events/new',
@@ -37,8 +37,15 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
-  return <RouterProvider router={router} />;
-}
+//Required for tanstack
+const queryClient = new QueryClient()
 
+function App() {
+  return(
+    //Provider is also required to use tanstack
+    <QueryClientProvider client={queryClient}> 
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  ) 
+}
 export default App;
