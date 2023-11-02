@@ -7,11 +7,14 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchEvents } from '../../util/http.js';
 
 export default function NewEventsSection() {
-  const { data, isPending, isError, error} = useQuery({ //to get error properties fetchEvents function has to throw error
+  const { data, isPending, isError, error, refetch} = useQuery({ //to get error properties fetchEvents function has to throw error
     queryKey: ['events'], //to cache and reuse //identifier
     queryFn: fetchEvents, //http request is executed here
+    
     // staleTime: 5000, disables fetching for 5 second
     // gcTime: 30000 delete cached data after 30 minutes
+    // onSuccess: () => { navigate('/events') } executes after data is fetched
+    
   });
 
   let content;
