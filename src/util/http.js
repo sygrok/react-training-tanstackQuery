@@ -68,7 +68,7 @@ export async function fetchSelectableImages({ signal }) {
 //fetching event by id for details page
 export async function fetchEvent({ id, signal }) {
   const response = await fetch(`http://localhost:3000/events/${id}`, {
-    signal,
+    signal, //I don't know really know what signal does. When  I remove it, still works
   });
 
   if (!response.ok) {
