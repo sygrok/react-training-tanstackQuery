@@ -24,7 +24,7 @@ export default function EditEvent() {
       //onMutate will execute after the mutate in handleSubmit executed
       const newEvent = data.event;
       await queryClient.cancelQueries({ queryKey: ["events", id] }); // We added this to not clash with updating
-      previousEvent = queryClient.getQueryData(["events", id]);
+      const previousEvent = queryClient.getQueryData(["events", id]);
       queryClient.setQueryData(["events", id], newEvent); // it will be manipulated without waiting for the response
 
       return { previousEvent };
@@ -39,6 +39,7 @@ export default function EditEvent() {
 
   function handleSubmit(formData) {
     mutate({ id, event: formData });
+    navigate("../");
   }
 
   function handleClose() {
